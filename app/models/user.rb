@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :campaigns
   has_many :campaign_characters
-  # TODO: has_many participating_campaigns through campaign_characters
+  has_many :participating_campaigns, through: :campaign_characters, source: :campaign
 
+  validates :username, length: { minimum: 2 }, unless: proc { |user| !user.username.present? }
+  validates_uniqueness_of :username, unless: proc { |user| !user.username.present? }
 end

@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_14_005538) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_20_044358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "campaign_characters", force: :cascade do |t|
     t.bigint "campaign_id", null: false
     t.bigint "user_id", null: false
-    t.string "class"
+    t.string "character_class"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["campaign_id"], name: "index_campaign_characters_on_campaign_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_005538) do
 
   create_table "campaign_sessions", force: :cascade do |t|
     t.string "location"
-    t.datetime "date"
+    t.date "date"
     t.time "start_time"
     t.time "end_time"
     t.float "latitude"
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_005538) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
