@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :campaign_characters
   has_many :participating_campaigns, through: :campaign_characters, source: :campaign
 
-  validates :username, length: { minimum: 2 }, unless: proc { |user| !user.username.present? }
-  validates_uniqueness_of :username, unless: proc { |user| !user.username.present? }
+  validates :username, length: { minimum: 2 }, unless: proc { !_1.username.present? }
+  validates_uniqueness_of :username, allow_blank: true
 end
