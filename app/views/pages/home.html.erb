@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home">
+  <section class="home__header">
+    <h1>Dungeon Buddy</h1>
+    <h2>Roll The Dice And Find Your Next Adventure</h2>
+    <h4>Bringing Dungeons and Dragons to Everyone</h4>
+  </section>
+  <section class="home__cta">
+    <%= link_to "Let's Roll", campaigns_path, class: "home__cta_button btn btn-flat" %>
+    <div class="images">
+      <img class="dnd_dice die_1" src=<%= image_path("dnd_dice.png") %> alt="First DnD Dice 20-Sided">
+      <img class="dnd_dice die_2" src=<%= image_path("dnd_dice.png") %> alt="Second DnD Dice 20-Sided">
+    </div>
+  </section>
+  <section class="home__details">
+    <p class="home__details_first">Let us help you out in the beginning from character build to the rules</p>
+    <p class="home__details_second">Join the perfect campaign that best suits your thirst for adventure.</p>
+    <p class="home__details_third">Get involved with a growing community and spread the love of Nat 20s!</p>
+  </section>
+</div>
