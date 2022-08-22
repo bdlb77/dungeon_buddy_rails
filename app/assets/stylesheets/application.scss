@@ -10,3 +10,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+h1,h2, h3, h4 {
+  color: $primary-red;
+}
+html,
+body {
+    height: 100%;
+}
