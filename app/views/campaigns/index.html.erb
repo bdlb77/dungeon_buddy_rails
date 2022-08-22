@@ -1,0 +1,8 @@
+<h1>Campaign Index</h1>
+
+<% @campaigns.each do |campaign| %>
+  <h4><%= link_to campaign.title, campaign_path(campaign) %></h4>
+  <p><%= campaign.description %></p>
+<% end %>
+
+<%= link_to "New Campaign", new_campaign_path %>

@@ -1,0 +1,7 @@
+<h1><%= @campaign.title %></h1>
+<p><%= @campaign.description %></p>
+
+
+<%= link_to "All Campaigns", campaigns_path %>
+
+<%= button_to "Destroy #{@campaign.title}", campaign_path(@campaign), method: :delete %>

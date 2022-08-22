@@ -1,0 +1,18 @@
+<%= form_with model: @campaign do |f| %>
+  <% if @campaign.errors.any? %>
+    <ul>
+    <% @campaign.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :maximum_player_count %>
+  <%= f.number_field :maximum_player_count %>
+  <%= f.label :active %>
+  <%= f.check_box :active %>
+  <%= f.submit %>
+<% end %>
