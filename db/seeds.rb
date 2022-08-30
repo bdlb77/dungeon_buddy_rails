@@ -5,11 +5,103 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+User.destroy_all
+Campaign.destroy_all
+CampaignCharacter.destroy_all
+
+5.times.each do
+  User.create(email: Faker::Internet.email, password: "123456", username: Faker::Internet.username(specifier: 3..5))
+end
 
 user = User.create(email: "bob@gmail.com", password: "123456", username: "bob1")
-user2 = User.create(email: "sally@gmail.com", password: "123456", username: "salstorm")
 
-campaign = Campaign.create(title: "First DnD Campaign", description: "A wonderful campaign", maximum_player_count: 5,
-                           active: true, user: user2)
+user = User.first
+user2 = User.second
+user3 = User.third
 
-campaign_session = CampaignCharacter.create(campaign:,  user:)
+user.campaigns.create(
+  [
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: true
+    },
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: true
+    },
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: false
+    },
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: true
+    },
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: true
+    }
+  ]
+)
+
+user2.campaigns.create(
+  [
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: false
+    },
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: true
+    },
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: true
+    }
+  ]
+)
+user3.campaigns.create(
+  [
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: false
+    },
+    {
+      title: Faker::Games::DnD.city,  #=> "Earthfast"
+      description: Faker::Games::WorldOfWarcraft.quote,
+      maximum_player_count: range(1..6),
+      active: true
+    }
+  ]
+)
+
+
+campaign1 = Campaign.first
+
+campaign1.campaign_characters.create(
+  [
+    { user: User.second },
+    { user: User.third },
+    { user: User.fourth }
+  ]
+)
