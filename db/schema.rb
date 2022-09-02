@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_20_044358) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_150041) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_20_044358) do
     t.datetime "updated_at", null: false
     t.index ["campaign_id"], name: "index_campaign_characters_on_campaign_id"
     t.index ["user_id"], name: "index_campaign_characters_on_user_id"
+  end
+
+  create_table "campaign_requests", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.bigint "campaign_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_campaign_requests_on_campaign_id"
+    t.index ["user_id"], name: "index_campaign_requests_on_user_id"
   end
 
   create_table "campaign_sessions", force: :cascade do |t|
@@ -63,6 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_20_044358) do
 
   add_foreign_key "campaign_characters", "campaigns"
   add_foreign_key "campaign_characters", "users"
+  add_foreign_key "campaign_requests", "campaigns"
+  add_foreign_key "campaign_requests", "users"
   add_foreign_key "campaign_sessions", "campaigns"
   add_foreign_key "campaigns", "users"
 end

@@ -26,31 +26,31 @@ user.campaigns.create(
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(5..7),
       active: true
     },
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..7),
       active: true
     },
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..7),
       active: false
     },
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..7),
       active: true
     },
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..7),
       active: true
     }
   ]
@@ -61,19 +61,19 @@ user2.campaigns.create(
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..7),
       active: false
     },
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..7),
       active: true
     },
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..6),
       active: true
     }
   ]
@@ -83,13 +83,13 @@ user3.campaigns.create(
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..6),
       active: false
     },
     {
       title: Faker::Games::DnD.city,  #=> "Earthfast"
       description: Faker::Games::WorldOfWarcraft.quote,
-      maximum_player_count: range(1..6),
+      maximum_player_count: rand(1..7),
       active: true
     }
   ]
@@ -98,10 +98,23 @@ user3.campaigns.create(
 
 campaign1 = Campaign.first
 
-campaign1.campaign_characters.create(
+campaign1.campaign_characters.create!(
   [
-    { user: User.second },
-    { user: User.third },
-    { user: User.fourth }
+    {
+      user: User.second,
+      character_class: Faker::Games::DnD.klass
+    },
+    {
+      user: User.third,
+      character_class: Faker::Games::DnD.klass
+    },
+    {
+      user: User.fourth,
+      character_class: Faker::Games::DnD.klass
+    },
+    {
+      user: User.fourth,
+      character_class: Faker::Games::DnD.klass
+    }
   ]
 )
